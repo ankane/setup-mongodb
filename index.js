@@ -17,6 +17,10 @@ if (process.platform == 'darwin') {
   const bin = `/usr/local/opt/mongodb-community@${mongoVersion}/bin`;
   run(`brew install mongodb-community@${mongoVersion}`);
   run(`${bin}/mongod --config /usr/local/etc/mongod.conf --fork`);
+
+  // set path
+  run(`echo "${bin}" >> $GITHUB_PATH`);
+  run(`brew unlink mongodb-community`);
 } else {
   if (mongoVersion != 4.4) {
     // remove previous version
