@@ -16,9 +16,12 @@ if (process.platform == 'darwin') {
   run(`mongod --config /usr/local/etc/mongod.conf --fork`);
 } else {
   if (mongoVersion != 4.4) {
-    run(`ls /etc/apt/sources.list.d`);
+    // remove previous version
+    run(`sudo rm /etc/apt/sources.list.d/mongodb-org-4.4.list`);
     run(`sudo apt-get purge mongodb-org*`);
     run(`sudo rm -r /var/log/mongodb /var/lib/mongodb`);
+
+    // install new version
     run(`wget -qO - https://www.mongodb.org/static/pgp/server-${mongoVersion}.asc | sudo apt-key add -`);
     run(`echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/${mongoVersion} multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-${mongoVersion}.list`);
     run(`sudo apt-get update`);
