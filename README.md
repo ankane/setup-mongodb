@@ -56,6 +56,7 @@ jobs:
 - [setup-postgres](https://github.com/ankane/setup-postgres)
 - [setup-mysql](https://github.com/ankane/setup-mysql)
 - [setup-mariadb](https://github.com/ankane/setup-mariadb)
+- [setup-elasticsearch](https://github.com/ankane/setup-elasticsearch)
 
 ## Contributing
 
