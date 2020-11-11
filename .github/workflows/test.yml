@@ -16,4 +16,4 @@ jobs:
       with:
         mongodb-version: ${{ matrix.mongodb-version }}
     - run: |
-        mongo --eval "db.serverStatus()"
+        mongo --eval "db.version()"
