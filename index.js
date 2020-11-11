@@ -14,13 +14,19 @@ if (![4.4, 4.2, 4.0, 3.6, 3.4, 3.2].includes(mongoVersion)) {
 mongoVersion = mongoVersion.toFixed(1);
 
 if (process.platform == 'darwin') {
+  if (mongoVersion != 4.4) {
+    // remove previous version
+    run(`brew unlink mongodb-community`);
+
+    // install new version
+    run(`brew install mongodb-community@${mongoVersion}`);
+  }
+
   const bin = `/usr/local/opt/mongodb-community@${mongoVersion}/bin`;
-  run(`brew install mongodb-community@${mongoVersion}`);
   run(`${bin}/mongod --config /usr/local/etc/mongod.conf --fork`);
 
   // set path
   run(`echo "${bin}" >> $GITHUB_PATH`);
-  run(`brew unlink mongodb-community`);
 } else {
   if (mongoVersion != 4.4) {
     // remove previous version
