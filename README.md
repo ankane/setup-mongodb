@@ -1,6 +1,6 @@
 # setup-mongodb
 
-The missing action for MongoDB - no need to use containers :tada:
+The missing action for MongoDB - no need for containers :tada:
 
 Supports Linux and Mac, and many versions
 
@@ -20,17 +20,12 @@ Version | `ubuntu-20.04` | `ubuntu-18.04` | `ubuntu-16.04` | `macos-10.15`
 Add it as a step to your workflow
 
 ```yml
-jobs:
-  build:
-    steps:
     - uses: ankane/setup-mongodb@v1
 ```
 
 Specify a version (defaults to the latest if no version is specified)
 
 ```yml
-jobs:
-  build:
     steps:
     - uses: ankane/setup-mongodb@v1
       with:
@@ -40,8 +35,6 @@ jobs:
 Test against multiple versions
 
 ```yml
-jobs:
-  build:
     strategy:
       matrix:
         mongodb-version: [4.4, 4.2, 4.0, 3.6, 3.4, 3.2]
@@ -49,6 +42,12 @@ jobs:
     - uses: ankane/setup-mongodb@v1
       with:
         mongodb-version: ${{ matrix.mongodb-version }}
+```
+
+Run queries
+
+```yml
+    - run: mongo --eval "db.version()"
 ```
 
 ## Related Actions
