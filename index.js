@@ -22,7 +22,7 @@ if (process.platform == 'darwin') {
     run(`sudo rm -r /var/log/mongodb /var/lib/mongodb`);
 
     // install new version
-    // key already exists
+    run(`wget -qO - https://www.mongodb.org/static/pgp/server-${mongoVersion}.asc | sudo apt-key add -`);
     run(`echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/${mongoVersion} multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-${mongoVersion}.list`);
     run(`sudo apt-get update`);
     run(`sudo apt-get install mongodb-org`);
