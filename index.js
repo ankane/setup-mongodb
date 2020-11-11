@@ -27,6 +27,13 @@ if (process.platform == 'darwin') {
 
   // set path
   run(`echo "${bin}" >> $GITHUB_PATH`);
+} else if (process.platform == 'win32') {
+  if (mongoVersion != '4.4') {
+    throw `MongoDB version not supported on Windows: ${mongoVersion}`;
+  }
+
+  // runs automatically
+  // https://github.com/actions/virtual-environments/blob/main/images/win/Windows2019-Readme.md#mongodb
 } else {
   if (mongoVersion != '4.4') {
     // remove previous version

@@ -3,7 +3,7 @@
 The missing action for MongoDB :tada:
 
 - Faster and simpler than containers
-- Works on Linux and Mac
+- Works on Linux, Mac, and Windows
 - Supports different versions
 
 [![Build Status](https://github.com/ankane/setup-mongodb/workflows/build/badge.svg?branch=v1)](https://github.com/ankane/setup-mongodb/actions)
@@ -29,14 +29,14 @@ Specify a version (defaults to the latest)
 
 Currently supports
 
-Version | `ubuntu-20.04` | `ubuntu-18.04` | `ubuntu-16.04` | `macos-10.15`
+Version | `ubuntu-20.04` | `ubuntu-18.04` | `ubuntu-16.04` | `macos-10.15` | `windows-2019`
 --- | --- | --- | --- | ---
-`4.4` | ✓ | ✓ | ✓ | ✓
-`4.2` | | ✓ | ✓ | ✓
-`4.0` | | ✓ | ✓ | ✓
-`3.6` | | ✓ | ✓ | ✓
-`3.4` | | | ✓ | ✓
-`3.2` | | | ✓ | ✓
+`4.4` | ✓ | ✓ | ✓ | ✓ | ✓
+`4.2` | | ✓ | ✓ | ✓ |
+`4.0` | | ✓ | ✓ | ✓ |
+`3.6` | | ✓ | ✓ | ✓ |
+`3.4` | | | ✓ | ✓ |
+`3.2` | | | ✓ | ✓ |
 
 Test against multiple versions
 

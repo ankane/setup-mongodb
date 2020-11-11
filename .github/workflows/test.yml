@@ -32,6 +32,8 @@ jobs:
             mongodb-version: 3.4
           - os: ubuntu-16.04
             mongodb-version: 3.2
+          - os: windows-2019
+            mongodb-version: 4.4
     steps:
     - uses: ankane/setup-mongodb@v1
       with:
