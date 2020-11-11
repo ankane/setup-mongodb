@@ -22,5 +22,5 @@ if (process.platform == 'darwin') {
     run(`sudo apt-get install mongodb-org`);
   }
   run(`sudo systemctl start mongod`);
-  run(`for i in {1..20}; do mongo --eval "db.version()" && break; done`);
+  run(`for i in {1..20}; do mongo --eval "db.version()" && break; sleep 1; done`);
 }
