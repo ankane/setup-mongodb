@@ -44,6 +44,8 @@ Test against multiple versions
         mongodb-version: ${{ matrix.mongodb-version }}
 ```
 
+## Extra Steps
+
 Run queries
 
 ```yml
