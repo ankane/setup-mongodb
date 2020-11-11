@@ -1,21 +1,19 @@
-const execSync = require("child_process").execSync;
+const execSync = require('child_process').execSync;
 
 function run(command) {
   console.log(command);
   execSync(command, {stdio: 'inherit'});
 }
 
-let mongoVersion = parseFloat(process.env['INPUT_MONGODB-VERSION'] || 4.4);
+const mongoVersion = parseFloat(process.env['INPUT_MONGODB-VERSION'] || "4.4").toFixed(1);
 
 // TODO make OS-specific
-if (![4.4, 4.2, 4.0, 3.6, 3.4, 3.2].includes(mongoVersion)) {
-  throw 'Invalid MongoDB version: ' + mongoVersion;
+if (!["4.4", "4.2", "4.0", "3.6", "3.4", "3.2"].includes(mongoVersion)) {
+  throw `MongoDB version not supported: ${mongoVersion}`;
 }
 
-mongoVersion = mongoVersion.toFixed(1);
-
 if (process.platform == 'darwin') {
-  if (mongoVersion != 4.4) {
+  if (mongoVersion != "4.4") {
     // remove previous version
     run(`brew unlink mongodb-community`);
 
@@ -30,7 +28,7 @@ if (process.platform == 'darwin') {
   // set path
   run(`echo "${bin}" >> $GITHUB_PATH`);
 } else {
-  if (mongoVersion != 4.4) {
+  if (mongoVersion != "4.4") {
     // remove previous version
     run(`sudo rm /etc/apt/sources.list.d/mongodb-org-*.list`);
     run(`sudo apt-get purge mongodb-org*`);
