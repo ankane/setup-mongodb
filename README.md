@@ -2,10 +2,16 @@
 
 The missing action for MongoDB - no need to use containers :tada:
 
-Supports:
+Supports Linux and Mac, and many versions
 
-- Linux and Mac (`ubuntu-20.04`, `ubuntu-18.04`, `ubuntu-16.04`, and `macos-10.15`)
-- Many versions (`4.4`, `4.2`, `4.0`, `3.6`, `3.4`, and `3.2`)
+Version | `ubuntu-20.04` | `ubuntu-18.04` | `ubuntu-16.04` | `macos-10.15`
+--- | --- | --- | --- | ---
+`4.4` | ✓ | ✓ | ✓ | ✓
+`4.2` | | ✓ | ✓ | ✓
+`4.0` | | ✓ | ✓ | ✓
+`3.6` | | ✓ | ✓ | ✓
+`3.4` | | | ✓ | ✓
+`3.2` | | | ✓ | ✓
 
 [![Build Status](https://github.com/ankane/setup-mongodb/workflows/build/badge.svg?branch=v1)](https://github.com/ankane/setup-mongodb/actions)
 
