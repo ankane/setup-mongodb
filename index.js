@@ -23,6 +23,7 @@ if (process.platform == 'darwin') {
     run(`brew install mongodb-community@${mongoVersion}`);
   }
 
+  // start
   const bin = `/usr/local/opt/mongodb-community@${mongoVersion}/bin`;
   run(`${bin}/mongod --config /usr/local/etc/mongod.conf --fork`);
 
@@ -41,6 +42,8 @@ if (process.platform == 'darwin') {
     run(`sudo apt-get update`);
     run(`sudo apt-get install mongodb-org`);
   }
+
+  // start
   run(`sudo systemctl start mongod`);
   run(`for i in \`seq 1 20\`; do mongo --eval "db.version()" > /dev/null && break; sleep 1; done`);
 }
