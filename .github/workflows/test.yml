@@ -20,6 +20,10 @@ jobs:
             mongodb-version: 4.0
           - os: ubuntu-18.04
             mongodb-version: 3.6
+          - os: ubuntu-18.04
+            mongodb-version: 3.4
+          - os: ubuntu-18.04
+            mongodb-version: 3.2
           - os: ubuntu-16.04
             mongodb-version: 4.4
           - os: ubuntu-16.04
