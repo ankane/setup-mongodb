@@ -14,8 +14,9 @@ if (![4.4, 4.2, 4.0, 3.6, 3.4, 3.2].includes(mongoVersion)) {
 mongoVersion = mongoVersion.toFixed(1);
 
 if (process.platform == 'darwin') {
+  const bin = `/usr/local/opt/mongodb-community@${mongoVersion}/bin`;
   run(`brew install mongodb-community@${mongoVersion}`);
-  run(`mongod --config /usr/local/etc/mongod.conf --fork`);
+  run(`${bin}/mongod --config /usr/local/etc/mongod.conf --fork`);
 } else {
   if (mongoVersion != 4.4) {
     // remove previous version
