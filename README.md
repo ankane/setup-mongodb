@@ -1,17 +1,10 @@
 # setup-mongodb
 
-The missing action for MongoDB - no need for containers :tada:
+The missing action for MongoDB :tada:
 
-Supports Linux and Mac, and many versions
-
-Version | `ubuntu-20.04` | `ubuntu-18.04` | `ubuntu-16.04` | `macos-10.15`
---- | --- | --- | --- | ---
-`4.4` | ✓ | ✓ | ✓ | ✓
-`4.2` | | ✓ | ✓ | ✓
-`4.0` | | ✓ | ✓ | ✓
-`3.6` | | ✓ | ✓ | ✓
-`3.4` | | | ✓ | ✓
-`3.2` | | | ✓ | ✓
+- Faster and simpler than containers
+- Works on Linux and Mac
+- Supports different versions
 
 [![Build Status](https://github.com/ankane/setup-mongodb/workflows/build/badge.svg?branch=v1)](https://github.com/ankane/setup-mongodb/actions)
 
@@ -33,6 +26,17 @@ Specify a version (defaults to the latest)
       with:
         mongodb-version: 4.4
 ```
+
+Currently supports
+
+Version | `ubuntu-20.04` | `ubuntu-18.04` | `ubuntu-16.04` | `macos-10.15`
+--- | --- | --- | --- | ---
+`4.4` | ✓ | ✓ | ✓ | ✓
+`4.2` | | ✓ | ✓ | ✓
+`4.0` | | ✓ | ✓ | ✓
+`3.6` | | ✓ | ✓ | ✓
+`3.4` | | | ✓ | ✓
+`3.2` | | | ✓ | ✓
 
 Test against multiple versions
 
