@@ -23,7 +23,9 @@ Add it as a step to your workflow
     - uses: ankane/setup-mongodb@v1
 ```
 
-Specify a version (defaults to the latest if no version is specified)
+## Versions
+
+Specify a version (defaults to the latest)
 
 ```yml
     steps:
