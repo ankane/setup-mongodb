@@ -7,6 +7,7 @@ function run(command) {
 
 let mongoVersion = parseFloat(process.env['INPUT_MONGODB-VERSION'] || 4.4);
 
+// TODO make OS-specific
 if (![4.4, 4.2, 4.0, 3.6, 3.4, 3.2].includes(mongoVersion)) {
   throw 'Invalid MongoDB version: ' + mongoVersion;
 }
