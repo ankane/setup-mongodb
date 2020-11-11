@@ -38,7 +38,7 @@ jobs:
   build:
     strategy:
       matrix:
-        mongodb-version: [13, 12, 11, 10, 9.6]
+        mongodb-version: [4.4, 4.2, 4.0, 3.6, 3.4, 3.2]
     steps:
     - uses: ankane/setup-mongodb@v1
       with:
