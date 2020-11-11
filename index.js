@@ -5,11 +5,13 @@ function run(command) {
   execSync(command, {stdio: 'inherit'});
 }
 
-const mongoVersion = parseFloat(process.env['INPUT_MONGODB-VERSION'] || 4.4);
+let mongoVersion = parseFloat(process.env['INPUT_MONGODB-VERSION'] || 4.4);
 
 if (![4.4, 4.2, 4.0, 3.6, 3.4, 3.2].includes(mongoVersion)) {
   throw 'Invalid MongoDB version: ' + mongoVersion;
 }
+
+mongoVersion = mongoVersion.toFixed(1);
 
 if (process.platform == 'darwin') {
   run(`brew install mongodb-community@${mongoVersion}`);
