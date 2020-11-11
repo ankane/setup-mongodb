@@ -7,10 +7,21 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # os: [ubuntu-20.04, ubuntu-18.04, ubuntu-16.04, macos-10.15]
-        # mongodb-version: [4.4, 4.2, 4.0, 3.6, 3.4, 3.2]
-        os: [ubuntu-18.04, ubuntu-16.04]
-        mongodb-version: [3.2]
+        os: [macos-10.15]
+        mongodb-version: [4.4, 4.2, 4.0, 3.6, 3.4, 3.2]
+        include:
+          - os: ubuntu-20.04
+            mongodb-version: 4.4
+          - os: ubuntu-20.04
+            mongodb-version: 4.2
+          - os: ubuntu-18.04
+            mongodb-version: 4.4
+          - os: ubuntu-18.04
+            mongodb-version: 4.2
+          - os: ubuntu-16.04
+            mongodb-version: 4.4
+          - os: ubuntu-16.04
+            mongodb-version: 4.2
     steps:
     - uses: ankane/setup-mongodb@v1
       with:
