@@ -22,5 +22,6 @@ if (process.platform == 'darwin') {
     run(`sudo apt-get install mongodb-org`);
   }
   run(`sudo systemctl start mongod`);
+  run(`sleep 10`);
   run(`sudo systemctl status mongod`);
 }
