@@ -24,7 +24,7 @@ Specify a version (defaults to the latest)
     steps:
     - uses: ankane/setup-mongodb@v1
       with:
-        mongodb-version: 4.4
+        mongodb-version: 5.0
 ```
 
 Currently supports
@@ -43,7 +43,7 @@ Test against multiple versions
 ```yml
     strategy:
       matrix:
-        mongodb-version: [4.4, 4.2, 4.0]
+        mongodb-version: [5.0, 4.4, 4.2, 4.0]
     steps:
     - uses: ankane/setup-mongodb@v1
       with:
