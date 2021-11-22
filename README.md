@@ -29,14 +29,14 @@ Specify a version (defaults to the latest)
 
 Currently supports
 
-Version | `4.4` | `4.2` | `4.0`
---- | --- | --- | ---
-`ubuntu-20.04` | ✓ | |
-`ubuntu-18.04` | ✓ | ✓ | ✓
-`macos-11.0` | ✓ | ✓ | ✓
-`macos-10.15` | ✓ | ✓ | ✓
-`windows-2019` | ✓ | |
-`windows-2016` | ✓ | |
+Version | `5.0` | `4.4` | `4.2` | `4.0`
+--- | --- | --- | --- | ---
+`ubuntu-20.04` | ✓ | ✓ | |
+`ubuntu-18.04` | ✓ | ✓ | ✓ | ✓
+`macos-11.0` | ✓ | ✓ | ✓ | ✓
+`macos-10.15` | ✓ | ✓ | ✓ | ✓
+`windows-2019` | ✓ | | |
+`windows-2016` | ✓ | | |
 
 Test against multiple versions
 
