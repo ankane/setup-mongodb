@@ -37,7 +37,6 @@ if (process.platform == 'darwin') {
 } else {
   if (mongoVersion != '5.0') {
     // remove previous version
-    run(`sudo rm /etc/apt/sources.list.d/mongodb-org-*.list`);
     run(`sudo apt-get purge mongodb-org*`);
     run(`sudo rm -r /var/log/mongodb /var/lib/mongodb`);
 
