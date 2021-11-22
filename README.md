@@ -29,22 +29,22 @@ Specify a version (defaults to the latest)
 
 Currently supports
 
-Version | `4.4` | `4.2` | `4.0` | `3.6` | `3.4` | `3.2`
---- | --- | --- | --- | --- | --- | ---
-`ubuntu-20.04` | ✓ | | | | |
-`ubuntu-18.04` | ✓ | ✓ | ✓ | ✓ | |
-`ubuntu-16.04` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓
-`macos-11.0` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓
-`macos-10.15` | ✓ | ✓ | ✓ | ✓ | ✓ | ✓
-`windows-2019` | ✓ | | | | |
-`windows-2016` | ✓ | | | | |
+Version | `4.4` | `4.2` | `4.0`
+--- | --- | --- | ---
+`ubuntu-20.04` | ✓ | |
+`ubuntu-18.04` | ✓ | ✓ | ✓
+`ubuntu-16.04` | ✓ | ✓ | ✓ |
+`macos-11.0` | ✓ | ✓ | ✓
+`macos-10.15` | ✓ | ✓ | ✓
+`windows-2019` | ✓ | |
+`windows-2016` | ✓ | |
 
 Test against multiple versions
 
 ```yml
     strategy:
       matrix:
-        mongodb-version: [4.4, 4.2, 4.0, 3.6, 3.4, 3.2]
+        mongodb-version: [4.4, 4.2, 4.0]
     steps:
     - uses: ankane/setup-mongodb@v1
       with:

@@ -8,7 +8,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [macos-11.0, macos-10.15]
-        mongodb-version: [4.4, 4.2, 4.0, 3.6, 3.4, 3.2]
+        mongodb-version: [4.4, 4.2, 4.0]
         include:
           - os: ubuntu-20.04
             mongodb-version: 4.4
@@ -18,20 +18,12 @@ jobs:
             mongodb-version: 4.2
           - os: ubuntu-18.04
             mongodb-version: 4.0
-          - os: ubuntu-18.04
-            mongodb-version: 3.6
           - os: ubuntu-16.04
             mongodb-version: 4.4
           - os: ubuntu-16.04
             mongodb-version: 4.2
           - os: ubuntu-16.04
             mongodb-version: 4.0
-          - os: ubuntu-16.04
-            mongodb-version: 3.6
-          - os: ubuntu-16.04
-            mongodb-version: 3.4
-          - os: ubuntu-16.04
-            mongodb-version: 3.2
           - os: windows-2019
             mongodb-version: 4.4
           - os: windows-2016
