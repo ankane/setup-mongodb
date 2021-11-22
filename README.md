@@ -64,6 +64,7 @@ Run queries
 - [setup-mysql](https://github.com/ankane/setup-mysql)
 - [setup-mariadb](https://github.com/ankane/setup-mariadb)
 - [setup-elasticsearch](https://github.com/ankane/setup-elasticsearch)
+- [setup-opensearch](https://github.com/ankane/setup-opensearch)
 - [setup-sqlserver](https://github.com/ankane/setup-sqlserver)
 
 ## Contributing
