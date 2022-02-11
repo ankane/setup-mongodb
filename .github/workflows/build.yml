@@ -2,7 +2,6 @@ name: build
 on: [push, pull_request]
 jobs:
   build:
-    if: "!contains(github.event.head_commit.message, '[skip ci]')"
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -14,6 +13,8 @@ jobs:
             mongodb-version: 5.0
           - os: ubuntu-20.04
             mongodb-version: 4.4
+          - os: windows-2022
+            mongodb-version: 5.0
           - os: windows-2019
             mongodb-version: 5.0
           - os: windows-2016
