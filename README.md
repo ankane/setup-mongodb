@@ -37,7 +37,6 @@ Version | `5.0` | `4.4` | `4.2` | `4.0`
 `macos-10.15` | ✓ | ✓ | ✓ | ✓
 `windows-2022` | ✓ | | |
 `windows-2019` | ✓ | | |
-`windows-2016` | ✓ | | |
 
 Test against multiple versions
 

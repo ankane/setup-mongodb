@@ -17,8 +17,6 @@ jobs:
             mongodb-version: 5.0
           - os: windows-2019
             mongodb-version: 5.0
-          - os: windows-2016
-            mongodb-version: 5.0
     steps:
     - uses: actions/checkout@v2
     - uses: ./.
