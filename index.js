@@ -8,7 +8,7 @@ function run(command) {
 const mongoVersion = parseFloat(process.env['INPUT_MONGODB-VERSION'] || '5.0').toFixed(1);
 
 // TODO make OS-specific
-if (!['6.0', '5.0', '4.4', '4.2', '4.0'].includes(mongoVersion)) {
+if (!['6.0', '5.0', '4.4', '4.2'].includes(mongoVersion)) {
   throw `MongoDB version not supported: ${mongoVersion}`;
 }
 
