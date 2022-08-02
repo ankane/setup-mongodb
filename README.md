@@ -31,6 +31,7 @@ Currently supports
 
 Version | `6.0` | `5.0` | `4.4` | `4.2`
 --- | --- | --- | --- | ---
+`ubuntu-22.04` | | | |
 `ubuntu-20.04` | ✓ | default | ✓ |
 `ubuntu-18.04` | ✓ | default | ✓ | ✓ |
 `macos-12` | ✓ | default | ✓ | ✓ |
@@ -58,6 +59,8 @@ Run queries
 ```yml
     - run: mongosh --eval "db.version()"
 ```
+
+Use `mongo` for MongoDB < 6
 
 ## Related Actions
 
