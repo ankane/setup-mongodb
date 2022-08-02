@@ -18,33 +18,33 @@ Add it as a step to your workflow
 
 ## Versions
 
-Specify a version (defaults to the latest)
+Specify a version
 
 ```yml
     steps:
     - uses: ankane/setup-mongodb@v1
       with:
-        mongodb-version: 5.0
+        mongodb-version: 6.0
 ```
 
 Currently supports
 
-Version | `5.0` | `4.4` | `4.2` | `4.0`
---- | --- | --- | --- | ---
-`ubuntu-20.04` | ✓ | ✓ | |
-`ubuntu-18.04` | ✓ | ✓ | ✓ | ✓
-`macos-12` | ✓ | ✓ | ✓ | ✓
-`macos-11` | ✓ | ✓ | ✓ | ✓
-`macos-10.15` | ✓ | ✓ | ✓ | ✓
-`windows-2022` | ✓ | | |
-`windows-2019` | ✓ | | |
+Version | `6.0` | `5.0` | `4.4` | `4.2` | `4.0`
+--- | --- | --- | --- | --- | ---
+`ubuntu-20.04` | ✓ | default | ✓ | |
+`ubuntu-18.04` | ✓ | default | ✓ | ✓ | ✓
+`macos-12` | ✓ | default | ✓ | ✓ | ✓
+`macos-11` | ✓ | default | ✓ | ✓ | ✓
+`macos-10.15` | ✓ | default | ✓ | ✓ | ✓
+`windows-2022` | | default | | |
+`windows-2019` | | default | | |
 
 Test against multiple versions
 
 ```yml
     strategy:
       matrix:
-        mongodb-version: [5.0, 4.4, 4.2, 4.0]
+        mongodb-version: [6.0, 5.0, 4.4, 4.2, 4.0]
     steps:
     - uses: ankane/setup-mongodb@v1
       with:
@@ -56,7 +56,7 @@ Test against multiple versions
 Run queries
 
 ```yml
-    - run: mongo --eval "db.version()"
+    - run: mongosh --eval "db.version()"
 ```
 
 ## Related Actions

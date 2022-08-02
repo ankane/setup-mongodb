@@ -8,14 +8,14 @@ function run(command) {
 const mongoVersion = parseFloat(process.env['INPUT_MONGODB-VERSION'] || '5.0').toFixed(1);
 
 // TODO make OS-specific
-if (!['5.0', '4.4', '4.2', '4.0'].includes(mongoVersion)) {
+if (!['6.0', '5.0', '4.4', '4.2', '4.0'].includes(mongoVersion)) {
   throw `MongoDB version not supported: ${mongoVersion}`;
 }
 
 if (process.platform == 'darwin') {
   if (mongoVersion != '5.0') {
     // remove previous version
-    run(`brew unlink mongodb-community`);
+    run(`brew unlink mongodb-community@5.0`);
 
     // install new version
     run(`brew install mongodb-community@${mongoVersion}`);
@@ -49,5 +49,6 @@ if (process.platform == 'darwin') {
 
   // start
   run(`sudo systemctl start mongod`);
-  run(`for i in \`seq 1 20\`; do mongo --eval "db.version()" > /dev/null && break; sleep 1; done`);
+  const shell = parseInt(mongoVersion) >= 5 ? 'mongosh' : 'mongo';
+  run(`for i in \`seq 1 20\`; do ${shell} --eval "db.version()" > /dev/null && break; sleep 1; done`);
 }
