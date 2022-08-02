@@ -26,5 +26,11 @@ jobs:
     - uses: ./.
       with:
         mongodb-version: ${{ matrix.mongodb-version }}
-    - run: |
+
+    - if: ${{ matrix.mongodb-version >= 5 }}
+      run: |
+        mongosh --eval "db.version()"
+
+    - if: ${{ matrix.mongodb-version < 5 }}
+      run: |
         mongo --eval "db.version()"
