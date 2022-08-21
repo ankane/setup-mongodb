@@ -32,8 +32,8 @@ if (process.platform == 'darwin') {
     throw `MongoDB version not supported on Windows: ${mongoVersion}`;
   }
 
-  // runs automatically
-  // https://github.com/actions/virtual-environments/blob/main/images/win/Windows2019-Readme.md#mongodb
+  run(`sc config MongoDB start= auto`);
+  run(`sc start MongoDB`);
 } else {
   if (mongoVersion != '5.0') {
     // remove previous version
