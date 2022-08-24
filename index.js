@@ -5,7 +5,9 @@ function run(command) {
   execSync(command, {stdio: 'inherit'});
 }
 
-const mongoVersion = parseFloat(process.env['INPUT_MONGODB-VERSION'] || '5.0').toFixed(1);
+const PREINSTALLED_VERSION = '5.0';
+
+const mongoVersion = parseFloat(process.env['INPUT_MONGODB-VERSION'] || PREINSTALLED_VERSION).toFixed(1);
 
 // TODO make OS-specific
 if (!['6.0', '5.0', '4.4', '4.2'].includes(mongoVersion)) {
@@ -13,9 +15,9 @@ if (!['6.0', '5.0', '4.4', '4.2'].includes(mongoVersion)) {
 }
 
 if (process.platform == 'darwin') {
-  if (mongoVersion != '5.0') {
+  if (mongoVersion != PREINSTALLED_VERSION) {
     // remove previous version
-    run(`brew unlink mongodb-community@5.0`);
+    run(`brew unlink mongodb-community@${PREINSTALLED_VERSION}`);
 
     // install new version
     run(`brew install mongodb-community@${mongoVersion}`);
@@ -28,14 +30,14 @@ if (process.platform == 'darwin') {
   // set path
   run(`echo "${bin}" >> $GITHUB_PATH`);
 } else if (process.platform == 'win32') {
-  if (mongoVersion != '5.0') {
+  if (mongoVersion != PREINSTALLED_VERSION) {
     throw `MongoDB version not supported on Windows: ${mongoVersion}`;
   }
 
   run(`sc config MongoDB start= auto`);
   run(`sc start MongoDB`);
 } else {
-  if (mongoVersion != '5.0') {
+  if (mongoVersion != PREINSTALLED_VERSION) {
     // remove previous version
     run(`sudo apt-get purge mongodb-org*`);
     run(`sudo rm -r /var/log/mongodb /var/lib/mongodb`);
