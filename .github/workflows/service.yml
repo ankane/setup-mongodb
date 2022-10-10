@@ -4,7 +4,7 @@ jobs:
   service:
     runs-on: ubuntu-latest
     services:
-      mysql:
+      mongodb:
         image: mongo
         options: >-
           --health-cmd "mongosh --eval 'db.version()'"
