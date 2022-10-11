@@ -3,5 +3,5 @@ inputs:
   mongodb-version:
     description: The MongoDB version to download (if necessary) and use
 runs:
-  using: node12
+  using: node16
   main: index.js

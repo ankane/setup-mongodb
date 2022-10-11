@@ -22,7 +22,7 @@ jobs:
           - os: windows-2019
             mongodb-version: 5.0
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - uses: ./.
       with:
         mongodb-version: ${{ matrix.mongodb-version }}
