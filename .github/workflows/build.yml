@@ -22,15 +22,15 @@ jobs:
           - os: windows-2019
             mongodb-version: 5.0
     steps:
-    - uses: actions/checkout@v3
-    - uses: ./.
-      with:
-        mongodb-version: ${{ matrix.mongodb-version }}
+      - uses: actions/checkout@v3
+      - uses: ./.
+        with:
+          mongodb-version: ${{ matrix.mongodb-version }}
 
-    - if: ${{ matrix.mongodb-version >= 6 }}
-      run: |
-        mongosh --eval "db.version()"
+      - if: ${{ matrix.mongodb-version >= 6 }}
+        run: |
+          mongosh --eval "db.version()"
 
-    - if: ${{ matrix.mongodb-version < 6 }}
-      run: |
-        mongo --eval "db.version()"
+      - if: ${{ matrix.mongodb-version < 6 }}
+        run: |
+          mongo --eval "db.version()"
