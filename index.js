@@ -1,4 +1,5 @@
 const execSync = require('child_process').execSync;
+const fs = require('fs');
 
 function run(command) {
   console.log(command);
@@ -35,10 +36,13 @@ if (process.platform == 'darwin') {
   run(`sc config MongoDB start= auto`);
   run(`sc start MongoDB`);
 } else {
-  if (mongoVersion != '5.0') {
-    // remove previous version
-    run(`sudo apt-get purge mongodb-org*`);
-    run(`sudo rm -r /var/log/mongodb /var/lib/mongodb`);
+  const image = process.env['ImageOS'];
+  if (mongoVersion != '5.0' || image == 'ubuntu22') {
+    if (fs.existsSync(`/var/log/mongodb`)) {
+      // remove previous version
+      run(`sudo apt-get purge mongodb-org*`);
+      run(`sudo rm -r /var/log/mongodb /var/lib/mongodb`);
+    }
 
     // install new version
     run(`wget -qO - https://www.mongodb.org/static/pgp/server-${mongoVersion}.asc | sudo apt-key add -`);
