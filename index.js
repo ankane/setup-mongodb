@@ -6,7 +6,9 @@ function run(command) {
   execSync(command, {stdio: 'inherit'});
 }
 
-const mongoVersion = parseFloat(process.env['INPUT_MONGODB-VERSION'] || '5.0').toFixed(1);
+const image = process.env['ImageOS'];
+const defaultVersion = image == 'ubuntu22' ? '6.0' : '5.0';
+const mongoVersion = parseFloat(process.env['INPUT_MONGODB-VERSION'] || defaultVersion).toFixed(1);
 
 // TODO make OS-specific
 if (!['6.0', '5.0', '4.4', '4.2'].includes(mongoVersion)) {
@@ -36,7 +38,6 @@ if (process.platform == 'darwin') {
   run(`sc config MongoDB start= auto`);
   run(`sc start MongoDB`);
 } else {
-  const image = process.env['ImageOS'];
   if (mongoVersion != '5.0' || image == 'ubuntu22') {
     if (fs.existsSync(`/var/log/mongodb`)) {
       // remove previous version
