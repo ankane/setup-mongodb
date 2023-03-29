@@ -32,10 +32,8 @@ Version | `6.0` | `5.0` | `4.4` | `4.2`
 --- | --- | --- | --- | ---
 `ubuntu-22.04` | default | | |
 `ubuntu-20.04` | ✓ | default | ✓ |
-`ubuntu-18.04` | ✓ | default | ✓ | ✓ |
 `macos-12` | ✓ | default | ✓ | ✓ |
 `macos-11` | ✓ | default | ✓ | ✓ |
-`macos-10.15` | ✓ | default | ✓ | ✓ |
 `windows-2022` | | default | |
 `windows-2019` | | default | |
 
