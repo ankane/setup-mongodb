@@ -6,17 +6,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-12, macos-11]
-        mongodb-version: [6.0, 5.0, 4.4, 4.2]
+        os: [ubuntu-20.04, macos-12, macos-11]
+        mongodb-version: [6.0, 5.0, 4.4]
         include:
           - os: ubuntu-22.04
             mongodb-version: 6.0
-          - os: ubuntu-20.04
-            mongodb-version: 6.0
-          - os: ubuntu-20.04
-            mongodb-version: 5.0
-          - os: ubuntu-20.04
-            mongodb-version: 4.4
           - os: windows-2022
             mongodb-version: 5.0
           - os: windows-2019
