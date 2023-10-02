@@ -11,14 +11,16 @@ const defaultVersion = image == 'ubuntu22' ? '6.0' : '5.0';
 const mongoVersion = parseFloat(process.env['INPUT_MONGODB-VERSION'] || defaultVersion).toFixed(1);
 
 // TODO make OS-specific
-if (!['6.0', '5.0', '4.4', '4.2'].includes(mongoVersion)) {
+if (!['7.0', '6.0', '5.0', '4.4', '4.2'].includes(mongoVersion)) {
   throw `MongoDB version not supported: ${mongoVersion}`;
 }
 
 if (process.platform == 'darwin') {
-  if (mongoVersion != '5.0') {
-    // remove previous version
-    run(`brew unlink mongodb-community@5.0`);
+  if (mongoVersion != '5.0' || image == 'macos13') {
+    if (image != 'macos13') {
+      // remove previous version
+      run(`brew unlink mongodb-community@5.0`);
+    }
 
     // install new version
     run(`brew install mongodb-community@${mongoVersion}`);
