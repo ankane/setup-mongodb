@@ -17,7 +17,9 @@ if (!['7.0', '6.0', '5.0', '4.4', '4.2'].includes(mongoVersion)) {
 
 if (process.platform == 'darwin') {
   if (mongoVersion != '5.0' || image == 'macos13') {
-    if (image != 'macos13') {
+    if (image == 'macos13') {
+      run(`brew tap mongodb/brew`);
+    } else {
       // remove previous version
       run(`brew unlink mongodb-community@5.0`);
     }
