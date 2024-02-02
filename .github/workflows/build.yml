@@ -6,7 +6,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-20.04, macos-13, macos-12, macos-11]
+        os: [ubuntu-20.04, macos-14, macos-13, macos-12]
         mongodb-version: [7.0, 6.0, 5.0, 4.4]
         include:
           - os: ubuntu-22.04

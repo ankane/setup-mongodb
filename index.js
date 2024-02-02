@@ -16,8 +16,8 @@ if (!['7.0', '6.0', '5.0', '4.4', '4.2'].includes(mongoVersion)) {
 }
 
 if (process.platform == 'darwin') {
-  if (mongoVersion != '5.0' || image == 'macos13') {
-    if (image == 'macos13') {
+  if (mongoVersion != '5.0' || image == 'macos13' || image == 'macos14') {
+    if (image == 'macos13' || image == 'macos14') {
       run(`brew tap mongodb/brew`);
     } else {
       // remove previous version
@@ -29,8 +29,9 @@ if (process.platform == 'darwin') {
   }
 
   // start
-  const bin = `/usr/local/opt/mongodb-community@${mongoVersion}/bin`;
-  run(`${bin}/mongod --config /usr/local/etc/mongod.conf --fork`);
+  const prefix = process.arch == 'arm64' ? '/opt/homebrew' : '/usr/local';
+  const bin = `${prefix}/opt/mongodb-community@${mongoVersion}/bin`;
+  run(`${bin}/mongod --config ${prefix}/etc/mongod.conf --fork`);
 
   // set path
   run(`echo "${bin}" >> $GITHUB_PATH`);

@@ -32,6 +32,7 @@ Version | `7.0` | `6.0` | `5.0` | `4.4`
 --- | --- | --- | --- | ---
 `ubuntu-22.04` | ✓ | default | |
 `ubuntu-20.04` | ✓ | ✓ | default |
+`macos-14` | ✓ | ✓ | default | ✓ |
 `macos-13` | ✓ | ✓ | default | ✓ |
 `macos-12` | ✓ | ✓ | default | ✓ |
 `macos-11` | ✓ | ✓ | default | ✓ |
