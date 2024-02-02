@@ -3,7 +3,11 @@ const fs = require('fs');
 
 function run(command) {
   console.log(command);
-  execSync(command, {stdio: 'inherit'});
+  const env = Object.assign({}, process.env);
+  env.HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK = '1';
+  env.HOMEBREW_NO_INSTALL_CLEANUP = '1';
+  env.HOMEBREW_NO_INSTALL_UPGRADE = '1';
+  execSync(command, {stdio: 'inherit', env: env});
 }
 
 const image = process.env['ImageOS'];
