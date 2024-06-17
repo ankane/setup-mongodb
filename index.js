@@ -15,7 +15,7 @@ const defaultVersion = image == 'ubuntu22' ? '6.0' : '5.0';
 const mongoVersion = parseFloat(process.env['INPUT_MONGODB-VERSION'] || defaultVersion).toFixed(1);
 
 // TODO make OS-specific
-if (!['7.0', '6.0', '5.0', '4.4', '4.2'].includes(mongoVersion)) {
+if (!['7.0', '6.0', '5.0'].includes(mongoVersion)) {
   throw `MongoDB version not supported: ${mongoVersion}`;
 }
 

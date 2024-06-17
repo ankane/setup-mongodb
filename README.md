@@ -28,23 +28,23 @@ Specify a version
 
 Currently supports
 
-Version | `7.0` | `6.0` | `5.0` | `4.4`
---- | --- | --- | --- | ---
-`ubuntu-22.04` | ✓ | default | |
-`ubuntu-20.04` | ✓ | ✓ | default |
-`macos-14` | ✓ | ✓ | default | ✓ |
-`macos-13` | ✓ | ✓ | default | ✓ |
-`macos-12` | ✓ | ✓ | default | ✓ |
-`macos-11` | ✓ | ✓ | default | ✓ |
-`windows-2022` | | | default |
-`windows-2019` | | | default |
+Version | `7.0` | `6.0` | `5.0`
+--- | --- | --- | ---
+`ubuntu-22.04` | ✓ | default
+`ubuntu-20.04` | ✓ | ✓ | default
+`macos-14` | ✓ | ✓ | default | ✓
+`macos-13` | ✓ | ✓ | default | ✓
+`macos-12` | ✓ | ✓ | default | ✓
+`macos-11` | ✓ | ✓ | default | ✓
+`windows-2022` | | | default
+`windows-2019` | | | default
 
 Test against multiple versions
 
 ```yml
     strategy:
       matrix:
-        mongodb-version: [7.0, 6.0, 5.0, 4.4]
+        mongodb-version: [7.0, 6.0, 5.0]
     steps:
       - uses: ankane/setup-mongodb@v1
         with:
