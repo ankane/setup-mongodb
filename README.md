@@ -6,7 +6,7 @@ The missing action for MongoDB :tada:
 - Works on Linux, Mac, and Windows
 - Supports different versions
 
-[![Build Status](https://github.com/ankane/setup-mongodb/workflows/build/badge.svg?branch=v1)](https://github.com/ankane/setup-mongodb/actions)
+[![Build Status](https://github.com/ankane/setup-mongodb/actions/workflows/build.yml/badge.svg)](https://github.com/ankane/setup-mongodb/actions)
 
 ## Getting Started
 
