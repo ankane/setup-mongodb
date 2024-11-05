@@ -11,11 +11,11 @@ function run(command) {
 }
 
 const image = process.env['ImageOS'];
-const defaultVersion = image == 'ubuntu22' ? '6.0' : '5.0';
+const defaultVersion = process.platform == 'win32' ? '5.0' : '8.0';
 const mongoVersion = parseFloat(process.env['INPUT_MONGODB-VERSION'] || defaultVersion).toFixed(1);
 
 // TODO make OS-specific
-if (!['7.0', '6.0', '5.0'].includes(mongoVersion)) {
+if (!['8.0', '7.0', '6.0', '5.0'].includes(mongoVersion)) {
   throw `MongoDB version not supported: ${mongoVersion}`;
 }
 
