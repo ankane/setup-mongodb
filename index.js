@@ -20,17 +20,9 @@ if (!['7.0', '6.0', '5.0'].includes(mongoVersion)) {
 }
 
 if (process.platform == 'darwin') {
-  if (mongoVersion != '5.0' || image == 'macos13' || image == 'macos14') {
-    if (image == 'macos13' || image == 'macos14') {
-      run(`brew tap mongodb/brew`);
-    } else {
-      // remove previous version
-      run(`brew unlink mongodb-community@5.0`);
-    }
-
-    // install new version
-    run(`brew install mongodb-community@${mongoVersion}`);
-  }
+  // install new version
+  run(`brew tap mongodb/brew`);
+  run(`brew install mongodb-community@${mongoVersion}`);
 
   // start
   const prefix = process.arch == 'arm64' ? '/opt/homebrew' : '/usr/local';
