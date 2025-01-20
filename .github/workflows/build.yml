@@ -11,11 +11,19 @@ jobs:
         include:
           - os: ubuntu-24.04
             mongodb-version: 8.0
+          - os: ubuntu-24.04-arm
+            mongodb-version: 8.0
           - os: ubuntu-22.04
             mongodb-version: 8.0
           - os: ubuntu-22.04
             mongodb-version: 7.0
           - os: ubuntu-22.04
+            mongodb-version: 6.0
+          - os: ubuntu-22.04-arm
+            mongodb-version: 8.0
+          - os: ubuntu-22.04-arm
+            mongodb-version: 7.0
+          - os: ubuntu-22.04-arm
             mongodb-version: 6.0
           - os: windows-2022
             mongodb-version: 5.0
