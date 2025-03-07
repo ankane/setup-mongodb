@@ -11,7 +11,7 @@ function run(command) {
 }
 
 const image = process.env['ImageOS'];
-const defaultVersion = process.platform == 'win32' ? '5.0' : '8.0';
+const defaultVersion = process.platform == 'win32' ? (image == 'win25' ? '7.0' : '5.0') : '8.0';
 const mongoVersion = parseFloat(process.env['INPUT_MONGODB-VERSION'] || defaultVersion).toFixed(1);
 
 // TODO make OS-specific
@@ -32,7 +32,7 @@ if (process.platform == 'darwin') {
   // set path
   run(`echo "${bin}" >> $GITHUB_PATH`);
 } else if (process.platform == 'win32') {
-  if (mongoVersion != '5.0') {
+  if (mongoVersion != defaultVersion) {
     throw `MongoDB version not supported on Windows: ${mongoVersion}`;
   }
 
