@@ -46,7 +46,7 @@ Test against multiple versions
 ```yml
     strategy:
       matrix:
-        mongodb-version: [8.0, 7.0, 6.0]
+        mongodb-version: [8.0, 7.0]
     steps:
       - uses: ankane/setup-mongodb@v1
         with:
