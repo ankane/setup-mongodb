@@ -38,7 +38,6 @@ Version | `8.0` | `7.0` | `5.0`
 `macos-15` | default | ✓ |
 `macos-15-intel` | default | ✓ |
 `macos-14` | default | ✓ |
-`macos-13` | default | ✓ |
 `windows-2025` | | default |
 `windows-2022` | | | default
 
