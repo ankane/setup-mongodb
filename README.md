@@ -28,18 +28,18 @@ Specify a version
 
 Currently supports
 
-Version | `8.0` | `7.0` | `5.0`
---- | --- | --- | ---
-`ubuntu-24.04` | default | |
-`ubuntu-24.04-arm` | default | |
-`ubuntu-22.04` | default | ✓ |
-`ubuntu-22.04-arm` | default | ✓ |
-`macos-26` | default | ✓ |
-`macos-15` | default | ✓ |
-`macos-15-intel` | default | ✓ |
-`macos-14` | default | ✓ |
-`windows-2025` | | default |
-`windows-2022` | | | default
+Version | `8.0` | `7.0`
+--- | --- | ---
+`ubuntu-24.04` | default |
+`ubuntu-24.04-arm` | default |
+`ubuntu-22.04` | default | ✓
+`ubuntu-22.04-arm` | default | ✓
+`macos-26` | default | ✓
+`macos-15` | default | ✓
+`macos-15-intel` | default | ✓
+`macos-14` | default | ✓
+`windows-2025` | | default
+`windows-2022` | | default
 
 Test against multiple versions
 
@@ -60,8 +60,6 @@ Run queries
 ```yml
       - run: mongosh --eval "db.version()"
 ```
-
-Use `mongo` for MongoDB < 6
 
 ## Related Actions
 

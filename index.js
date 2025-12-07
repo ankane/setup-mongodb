@@ -11,11 +11,11 @@ function run(command) {
 }
 
 const image = process.env['ImageOS'];
-const defaultVersion = process.platform == 'win32' ? (image == 'win25' ? '7.0' : '5.0') : '8.0';
+const defaultVersion = process.platform == 'win32' ? '7.0' : '8.0';
 const mongoVersion = parseFloat(process.env['INPUT_MONGODB-VERSION'] || defaultVersion).toFixed(1);
 
 // TODO make OS-specific
-if (!['8.0', '7.0', '6.0', '5.0'].includes(mongoVersion)) {
+if (!['8.0', '7.0'].includes(mongoVersion)) {
   throw `MongoDB version not supported: ${mongoVersion}`;
 }
 
@@ -39,22 +39,19 @@ if (process.platform == 'darwin') {
   run(`sc config MongoDB start= auto`);
   run(`sc start MongoDB`);
 } else {
-  if (mongoVersion != '5.0' || image == 'ubuntu22') {
-    if (fs.existsSync(`/var/log/mongodb`)) {
-      // remove previous version
-      run(`sudo apt-get purge mongodb-org*`);
-      run(`sudo rm -r /var/log/mongodb /var/lib/mongodb`);
-    }
-
-    // install new version
-    run(`wget -qO - https://www.mongodb.org/static/pgp/server-${mongoVersion}.asc | sudo apt-key add -`);
-    run(`echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu $(. /etc/os-release && echo $VERSION_CODENAME)/mongodb-org/${mongoVersion} multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-${mongoVersion}.list`);
-    run(`sudo apt-get update -o Dir::Etc::sourcelist="sources.list.d/mongodb-org-${mongoVersion}.list" -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"`);
-    run(`sudo apt-get install mongodb-org`);
+  if (fs.existsSync(`/var/log/mongodb`)) {
+    // remove previous version
+    run(`sudo apt-get purge mongodb-org*`);
+    run(`sudo rm -r /var/log/mongodb /var/lib/mongodb`);
   }
+
+  // install new version
+  run(`wget -qO - https://www.mongodb.org/static/pgp/server-${mongoVersion}.asc | sudo apt-key add -`);
+  run(`echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu $(. /etc/os-release && echo $VERSION_CODENAME)/mongodb-org/${mongoVersion} multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-${mongoVersion}.list`);
+  run(`sudo apt-get update -o Dir::Etc::sourcelist="sources.list.d/mongodb-org-${mongoVersion}.list" -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"`);
+  run(`sudo apt-get install mongodb-org`);
 
   // start
   run(`sudo systemctl start mongod`);
-  const shell = parseInt(mongoVersion) >= 5 ? 'mongosh' : 'mongo';
-  run(`for i in \`seq 1 20\`; do ${shell} --eval "db.version()" > /dev/null && break; sleep 1; done`);
+  run(`for i in \`seq 1 20\`; do mongosh --eval "db.version()" > /dev/null && break; sleep 1; done`);
 }
