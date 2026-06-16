@@ -46,8 +46,8 @@ if (process.platform == 'darwin') {
   }
 
   // install new version
-  run(`wget -qO - https://www.mongodb.org/static/pgp/server-${mongoVersion}.asc | sudo apt-key add -`);
-  run(`echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu $(. /etc/os-release && echo $VERSION_CODENAME)/mongodb-org/${mongoVersion} multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-${mongoVersion}.list`);
+  run(`wget -qO - https://www.mongodb.org/static/pgp/server-${mongoVersion}.asc | sudo gpg -o /usr/share/keyrings/mongodb-server-${mongoVersion}.gpg --dearmor`);
+  run(`echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-${mongoVersion}.gpg ] https://repo.mongodb.org/apt/ubuntu $(. /etc/os-release && echo $VERSION_CODENAME)/mongodb-org/${mongoVersion} multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-${mongoVersion}.list`);
   run(`sudo apt-get update -o Dir::Etc::sourcelist="sources.list.d/mongodb-org-${mongoVersion}.list" -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"`);
   run(`sudo apt-get install mongodb-org`);
 
