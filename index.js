@@ -21,8 +21,8 @@ if (!['8.0', '7.0'].includes(mongoVersion)) {
 
 if (process.platform == 'darwin') {
   // install new version
-  run(`brew tap mongodb/brew`);
-  run(`brew install mongodb-community@${mongoVersion}`);
+  run(`brew trust --formula mongodb/brew/mongodb-community mongodb/brew/mongodb-database-tools mongodb/brew/mongodb-enterprise`);
+  run(`brew install mongodb/brew/mongodb-community@${mongoVersion}`);
 
   // start
   const prefix = process.arch == 'arm64' ? '/opt/homebrew' : '/usr/local';
