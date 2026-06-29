@@ -18,15 +18,8 @@ jobs:
           - os: windows-2022
             mongodb-version: 7.0
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: ./.
         with:
           mongodb-version: ${{ matrix.mongodb-version }}
-
-      - if: ${{ matrix.mongodb-version >= 6 }}
-        run: |
-          mongosh --eval "db.version()"
-
-      - if: ${{ matrix.mongodb-version < 6 }}
-        run: |
-          mongo --eval "db.version()"
+      - run: mongosh --eval "db.version()"
