@@ -2,7 +2,7 @@
 
 The missing action for MongoDB :tada:
 
-- Faster (with the default version) and simpler than containers
+- Simpler than containers
 - Works on Linux, Mac, and Windows
 - Supports different versions
 
