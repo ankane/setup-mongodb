@@ -11,11 +11,11 @@ function run(command) {
 }
 
 const image = process.env['ImageOS'];
-const defaultVersion = process.platform == 'win32' ? '7.0' : '8.0';
+const defaultVersion = process.platform == 'win32' ? '7.0' : '9.0';
 const mongoVersion = parseFloat(process.env['INPUT_MONGODB-VERSION'] || defaultVersion).toFixed(1);
 
 // TODO make OS-specific
-if (!['8.0', '7.0'].includes(mongoVersion)) {
+if (!['9.0', '8.0', '7.0'].includes(mongoVersion)) {
   throw `MongoDB version not supported: ${mongoVersion}`;
 }
 
@@ -27,7 +27,7 @@ if (process.platform == 'darwin') {
   // start
   const prefix = process.arch == 'arm64' ? '/opt/homebrew' : '/usr/local';
   const bin = `${prefix}/opt/mongodb-community@${mongoVersion}/bin`;
-  run(`${bin}/mongod --config ${prefix}/etc/mongod.conf --fork`);
+  run(`${bin}/mongod --config ${prefix}/etc/mongod.conf ${mongoVersion == '9.0' ? '&' : '--fork'}`);
 
   // set path
   run(`echo "${bin}" >> $GITHUB_PATH`);
@@ -46,8 +46,9 @@ if (process.platform == 'darwin') {
   }
 
   // install new version
-  run(`wget -qO - https://www.mongodb.org/static/pgp/server-${mongoVersion}.asc | sudo gpg -o /usr/share/keyrings/mongodb-server-${mongoVersion}.gpg --dearmor`);
-  run(`echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-${mongoVersion}.gpg ] https://repo.mongodb.org/apt/ubuntu $(. /etc/os-release && echo $VERSION_CODENAME)/mongodb-org/${mongoVersion} multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-${mongoVersion}.list`);
+  const keyVersion = mongoVersion == '9.0' ? '9' : mongoVersion;
+  run(`wget -qO - https://www.mongodb.org/static/pgp/server-${keyVersion}.asc | sudo gpg -o /usr/share/keyrings/mongodb-server-${keyVersion}.gpg --dearmor`);
+  run(`echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-${keyVersion}.gpg ] https://repo.mongodb.org/apt/ubuntu $(. /etc/os-release && echo $VERSION_CODENAME)/mongodb-org/${mongoVersion} multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-${mongoVersion}.list`);
   run(`sudo apt-get update -o Dir::Etc::sourcelist="sources.list.d/mongodb-org-${mongoVersion}.list" -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"`);
   run(`sudo apt-get install mongodb-org`);
 

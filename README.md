@@ -23,30 +23,32 @@ Specify a version
 ```yml
       - uses: ankane/setup-mongodb@v1
         with:
-          mongodb-version: 8.0
+          mongodb-version: 9.0
 ```
 
 Currently supports
 
-Version | `8.0` | `7.0`
---- | --- | ---
-`ubuntu-24.04` | default |
-`ubuntu-24.04-arm` | default |
-`ubuntu-22.04` | default | ✓
-`ubuntu-22.04-arm` | default | ✓
-`macos-26` | default | ✓
-`macos-15` | default | ✓
-`macos-15-intel` | default | ✓
-`macos-14` | default | ✓
-`windows-2025` | | default
-`windows-2022` | | default
+Version | `9.0` | `8.0` | `7.0`
+--- | --- | --- | ---
+`ubuntu-26.04` | default | |
+`ubuntu-26.04-arm` | default | |
+`ubuntu-24.04` | default | ✓ |
+`ubuntu-24.04-arm` | default | ✓ |
+`ubuntu-22.04` | default | ✓ | ✓
+`ubuntu-22.04-arm` | default | ✓ | ✓
+`macos-26` | default | ✓ | ✓
+`macos-15` | default | ✓ | ✓
+`macos-15-intel` | default | ✓ | ✓
+`macos-14` | default | ✓ | ✓
+`windows-2025` | | | default
+`windows-2022` | | | default
 
 Test against multiple versions
 
 ```yml
     strategy:
       matrix:
-        mongodb-version: [8.0, 7.0]
+        mongodb-version: [9.0, 8.0, 7.0]
     steps:
       - uses: ankane/setup-mongodb@v1
         with:
